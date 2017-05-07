@@ -1,0 +1,1 @@
+export const MOVING_TITLE = 'MOVING_TITLE'
