@@ -5,7 +5,7 @@ let utils = new Utils()
 const actions = {
   getMoving(store) {
     utils.get('/movie/in_theaters', {}).then(res => {
-      store.commit(types.MOVING_TITLE, {title: 'monkey'})
+      store.commit(types.MOVING_TITLE, res)
     })
   }
 }

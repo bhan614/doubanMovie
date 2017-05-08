@@ -3,7 +3,7 @@ import actions from './actions'
 import mutations from './mutations'
 
 const state = {
-  title: 'doubanmovie'
+  movingData: {}
 }
 
 export default {

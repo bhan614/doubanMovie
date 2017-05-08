@@ -1,6 +1,6 @@
 const getters = {
-  title: state => {
-    return state.title
+  movingData: state => {
+    return state.movingData
   }
 }
 export default getters

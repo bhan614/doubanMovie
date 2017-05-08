@@ -1,17 +1,18 @@
 <template>
   <div class="hello">
-  <p>
-    {{title}}
-  </p>
+  <MoviesTag :data="this.movingData"></MoviesTag>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import MoviesTag from './common/moviesTag.vue'
 export default {
   name: 'hello',
   data () {
     return {
+      data: {
+      }
     }
   },
   mounted () {
@@ -19,9 +20,12 @@ export default {
   },
   methods: {
   },
+  components: {
+    MoviesTag
+  },
   computed: {
     ...mapGetters([
-      'title'
+      'movingData'
     ])
   }
 }

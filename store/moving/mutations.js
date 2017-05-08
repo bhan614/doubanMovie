@@ -1,7 +1,7 @@
 import * as types from './types'
 const mutations = {
   [types.MOVING_TITLE] (state, data){
-    state.title = data.title
+    state.movingData = data
   }
 }
 export default mutations
