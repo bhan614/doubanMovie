@@ -11,13 +11,11 @@
           <a href="">{{subject.title}}</a>
         </li>
         <li class="film-rate">
-          <!--<el-rate-->
-            <!--v-model="value5"-->
-            <!--disabled-->
-            <!--show-text-->
-            <!--text-color="#ff9900"-->
-            <!--text-template="{value}">-->
-          <!--</el-rate>-->
+          <el-rate
+            v-model="subject.rating.average"
+            disabled>
+          </el-rate>
+          <span class="rateNum">{{subject.rating.average}}</span>
         </li>
         <li class="film-button">
         <span>
@@ -99,8 +97,25 @@ export default{
     }
     .film-rate{
       display: inline-block;
-      margin: 4px auto 2px;
+      margin: 4px auto 5px;
       height: 19px;
+      .el-rate{
+        display: inline-block;
+        .el-rate__item{
+          transform: scale(0.8);
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .el-rate__icon{
+          font-size: 12px;
+          margin-right: 0px;
+        }
+      }
+      .rateNum{
+        display: inline-block;
+        font-size: 12px;
+        vertical-align: middle;
+      }
     }
     .film-button{
       span{
