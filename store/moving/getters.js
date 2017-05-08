@@ -1,9 +1,6 @@
 const getters = {
-  movingData: state => {
-    return state.movingData
-  },
-  loadingMoving: state => {
-    return state.loadingMoving
-  }
+  movingData: state => state.movingData,
+  loadingMoving: state => state.loadingMoving,
+  upcoming: state => state.upcoming
 }
 export default getters

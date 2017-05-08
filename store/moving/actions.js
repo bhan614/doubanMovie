@@ -6,7 +6,13 @@ const actions = {
   getMoving(store) {
     utils.get('/movie/in_theaters', {}).then(res => {
       store.commit(types.MOVING_LIST, res)
-      store.commit(types.MOVING_LOADING, {loading: false})
+      store.commit(types.MOVING_LOADING, res)
+    })
+  },
+  getUpcoming(store) {
+    utils.get('/movie/coming_soon', {}).then(res => {
+      store.commit(types.MOVING_COMING, res)
+      store.commit(types.MOVING_LOADING, res)
     })
   }
 }

@@ -5,6 +5,9 @@ const mutations = {
   },
   [types.MOVING_LOADING] (state, data){
     state.loadingMoving = data.loading
+  },
+  [types.MOVING_COMING] (state, data){
+    state.upcoming = data
   }
 }
 export default mutations

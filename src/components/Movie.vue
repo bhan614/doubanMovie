@@ -8,7 +8,7 @@
 import { mapGetters } from 'vuex'
 import MoviesTag from './common/moviesTag.vue'
 export default {
-  name: 'hello',
+  name: 'movie',
   data () {
     return {
       data: {

@@ -1,3 +1,4 @@
 export const MOVING_TITLE = 'MOVING_TITLE'
 export const MOVING_LIST = 'MOVING_LIST'
 export const MOVING_LOADING = 'MOVING_LOADING'
+export const MOVING_COMING = 'MOVING_COMING'

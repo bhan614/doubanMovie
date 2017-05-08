@@ -6,7 +6,8 @@ const state = {
   movingData: {
     subjects: []
   },
-  loadingMoving: true
+  loadingMoving: true,
+  upcoming: {}
 }
 
 export default {
