@@ -1,5 +1,5 @@
 <template>
-  <div class="moviesList">
+  <div class="moviesList" v-loading="this.loadingMoving">
     <div class="movieTag" v-for="(subject,index) in data.subjects">
       <ul>
         <li class="film-pic">
@@ -29,7 +29,7 @@
   </div>
 </template>
 <script>
-  import {Utils} from '../../common/util'
+import { mapGetters } from 'vuex'
 export default{
   props:{
     data: Object
@@ -40,22 +40,21 @@ export default{
   },
   watch:{
     data(){
-      console.log(this.data);
     }
   },
-  mounted () {
-    console.log(this.data);
-  },
-  methods () {
+  computed: {
+    ...mapGetters([
+      'loadingMoving'
+    ])
   }
 }
 </script>
 <style rel="stylesheet/less" lang="less">
 .moviesList{
-  width: 1000px;
+  width: 950px;
   margin: 30px auto 0;
   .movieTag{
-    width: 128px;
+    width: 118px;
     height: 270px;
     overflow: hidden;
     font-size: 12px;

@@ -3,7 +3,10 @@ import actions from './actions'
 import mutations from './mutations'
 
 const state = {
-  movingData: {}
+  movingData: {
+    subjects: []
+  },
+  loadingMoving: true
 }
 
 export default {

@@ -13,8 +13,8 @@
     </div>
     <div class="douban-bar">
       <ul>
-        <li v-for="bar in barList" :class="title === bar.title ? 'active' : ''">
-          <a>{{bar.title}}</a>
+        <li v-for="bar in barList" @click="choiceUrl(bar.title)">
+          <router-link :to="bar.url" :class="title === bar.title ? 'active' : ''">{{bar.title}}</router-link>
         </li>
       </ul>
     </div>
@@ -28,23 +28,28 @@
         title: '正在热映',
         barList: [{
           title: '正在热映',
-          url: ''
+          url: '/'
         }, {
           title: '即将上映',
-          url: ''
+          url: '/'
         }, {
           title: 'Top250',
-          url: ''
+          url: '/'
         }, {
           title: '口碑榜',
-          url: ''
+          url: '/'
         }, {
           title: '北美票房榜',
-          url: ''
+          url: '/'
         }, {
           title: '新片榜',
-          url: ''
+          url: '/'
         }]
+      }
+    },
+    methods: {
+      choiceUrl (title) {
+        this.title = title
       }
     }
   }
@@ -60,13 +65,18 @@
       margin: 0 auto;
       ul{
         li{
-          padding: 9px;
+          padding: 7px;
           list-style: none;
           display: inline-block;
           cursor: pointer;
-        }
-        li.active{
-          color: @doubanColor;
+          a{
+            font-size: 12px;
+            color: #aaa;
+            text-decoration: none;
+          }
+          a.active{
+            color: $doubanColor;
+          }
         }
       }
     }
@@ -93,6 +103,7 @@
           margin-left: 50px;
           input{
             height: 34px;
+            line-height: 34px;
           }
         }
         .douban-title-img{
