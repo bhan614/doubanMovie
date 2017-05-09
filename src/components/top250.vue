@@ -4,7 +4,7 @@
     <div class="indent">
       <div class="">
         <p class="ul first"></p>
-        <searchTag v-for="(subject,index) in ranking250.subjects" :subject="subject"></searchTag>
+        <searchTag v-for="(subject,index) in ranking250.subjects" :subject="subject" :key="index"></searchTag>
       </div>
     </div>
   </div>

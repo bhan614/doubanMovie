@@ -2,22 +2,16 @@
   <div class="grid-950 clearfix">
       <article class="container">
         <div class="tit">
-          <h1>杭州-影讯</h1>
+          <h1>{{city}}-影讯</h1>
           <div id="" class="locat">
-            <a class="change-loc" href="javascript:void(0);" @click="showCity= true">[切换城市]</a>
-            <div class="cities-list" :class="{'fn-hide':!showCity}">
-                <div class="cities-list-bd">
-                    <div class="cities-list-item" v-on:click="changeCity($event)">
-                          <span><a class="city-item" href="javascript:;" id="108288" uid="beijing">北京</a></span>
-                          <span><a class="city-item" href="javascript:;" id="108296" uid="shanghai">上海</a></span>
-                          <span><a class="city-item" href="javascript:;" id="118281" uid="guangzhou">广州</a></span>
-                          <span><a class="city-item" href="javascript:;" id="118282" uid="shenzhen">深圳</a></span>
-                          <span><a class="city-item" href="javascript:;" id="118254" uid="wuhan">武汉</a></span>
-                          <span><a class="city-item" href="javascript:;" id="118172" uid="hangzhou">杭州</a></span>
-                    </div>
-                    <div class="arrow"><span></span></div>
-                </div>
-            </div>
+            <el-dropdown trigger="click" @command="changeCity">
+              <span class="el-dropdown-link">
+                [切换城市]
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item v-for="(city,index) in citys" :command="city.name" :key="index">{{city.name}}</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
           </div>
           <div class="hd">
               <h2>影院上映</h2>
@@ -28,7 +22,7 @@
         </div>
         <div class="two-list">
           <ul class="clearfix"  v-loading="loadingMoving" >
-            <li class="item" v-for="item in this.upcoming.subjects">
+            <li class="item" v-for="(item, index) in this.upcoming.subjects" :key="index">
               <a class="thumb" v-bind:href="item.alt">
                   <img v-bind:src="item.images.small" class="">
               </a>
@@ -67,16 +61,32 @@ import { mapGetters } from 'vuex'
     name: 'upcoming',
     data () {
       return {
-        showCity: false
+        showCity: false,
+        citys: [
+        {
+          name: '北京'
+        },
+        {
+          name: '上海'
+        },
+        {
+          name: '广州'
+        },
+        {
+          name: '深圳'
+        },
+        {
+          name: '杭州'
+        }
+      ]
       }
     },
     mounted () {
       this.$store.dispatch('getUpcoming')
     },
     methods: {
-      changeCity(event) {
-        let text = event.target.innerText
-        this.$store.commit('MOVIE_CITY', {city: text})
+      changeCity(command) {
+        this.$store.commit('MOVIE_CITY', {city: command})
         this.showCity = false
         this,$store.dispatch('getUpcoming')
       }
@@ -84,7 +94,8 @@ import { mapGetters } from 'vuex'
     computed: {
       ...mapGetters([
         'upcoming',
-        'loadingMoving'
+        'loadingMoving',
+        'city'
       ])
     }
   }
