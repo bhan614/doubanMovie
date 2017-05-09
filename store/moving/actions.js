@@ -16,7 +16,7 @@ const actions = {
     })
   },
   getTop250(store) {
-    utils.get('/movie/top250', {}).then(res => {
+    utils.get('/movie/top250', {start: store.state.start, count: 7}).then(res => {
       store.commit(types.MOVIE_TOP_250, res)
       store.commit(types.MOVING_LOADING, res)
     })

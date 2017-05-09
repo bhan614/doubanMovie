@@ -5,6 +5,7 @@ const getters = {
   city: state => state.city,
   ranking250: state => state.ranking250,
   id: state => state.id,
+  start: state => state.start,
   movieDetail: state => state.movieDetail
 }
 export default getters
