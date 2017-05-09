@@ -8,7 +8,9 @@ const state = {
   },
   loadingMoving: true,
   upcoming: {},
-  city: '杭州'
+  city: '杭州',
+  ranking250: {},
+  start: 0
 }
 
 export default {

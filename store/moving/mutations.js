@@ -11,6 +11,12 @@ const mutations = {
   },
   [types.MOVIE_CITY] (state, data) {
     state.city = data.city
-  }
+  },
+  [types.MOVIE_TOP_250] (state, data) {
+    state.ranking250 = data
+  },
+  [types.PAGE_START] (state, data) {
+    state.start = data.start
+  },
 }
 export default mutations

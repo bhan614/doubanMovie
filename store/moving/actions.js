@@ -14,6 +14,12 @@ const actions = {
       store.commit(types.MOVING_COMING, res)
       store.commit(types.MOVING_LOADING, res)
     })
+  },
+  getTop250(store) {
+    utils.get('/movie/top250', {}).then(res => {
+      store.commit(types.MOVIE_TOP_250, res)
+      store.commit(types.MOVING_LOADING, res)
+    })
   }
 }
 export default actions
