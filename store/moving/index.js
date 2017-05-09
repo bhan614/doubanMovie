@@ -7,7 +7,8 @@ const state = {
     subjects: []
   },
   loadingMoving: true,
-  upcoming: {}
+  upcoming: {},
+  city: '杭州'
 }
 
 export default {

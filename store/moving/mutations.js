@@ -8,6 +8,9 @@ const mutations = {
   },
   [types.MOVING_COMING] (state, data){
     state.upcoming = data
+  },
+  [types.MOVIE_CITY] (state, data) {
+    state.city = data.city
   }
 }
 export default mutations

@@ -1,7 +1,31 @@
 <template>
   <div class="grid-950 clearfix">
       <article class="container">
-        <div class="tit"></div>
+        <div class="tit">
+          <h1>杭州-影讯</h1>
+          <div id="" class="locat">
+            <a class="change-loc" href="javascript:void(0);" @click="showCity= true">[切换城市]</a>
+            <div class="cities-list" :class="{'fn-hide':!showCity}">
+                <div class="cities-list-bd">
+                    <div class="cities-list-item" v-on:click="changeCity($event)">
+                          <span><a class="city-item" href="javascript:;" id="108288" uid="beijing">北京</a></span>
+                          <span><a class="city-item" href="javascript:;" id="108296" uid="shanghai">上海</a></span>
+                          <span><a class="city-item" href="javascript:;" id="118281" uid="guangzhou">广州</a></span>
+                          <span><a class="city-item" href="javascript:;" id="118282" uid="shenzhen">深圳</a></span>
+                          <span><a class="city-item" href="javascript:;" id="118254" uid="wuhan">武汉</a></span>
+                          <span><a class="city-item" href="javascript:;" id="118172" uid="hangzhou">杭州</a></span>
+                    </div>
+                    <div class="arrow"><span></span></div>
+                </div>
+            </div>
+          </div>
+          <div class="hd">
+              <h2>影院上映</h2>
+              <ul class="tab-hd clearfix">
+                  <li class="on">即将上映</li>
+              </ul>
+          </div>
+        </div>
         <div class="two-list">
           <ul class="clearfix"  v-loading="loadingMoving" >
             <li class="item" v-for="item in this.upcoming.subjects">
@@ -42,12 +66,20 @@ import { mapGetters } from 'vuex'
   export default {
     name: 'upcoming',
     data () {
-      return {}
+      return {
+        showCity: false
+      }
     },
     mounted () {
       this.$store.dispatch('getUpcoming')
     },
     methods: {
+      changeCity(event) {
+        let text = event.target.innerText
+        this.$store.commit('MOVIE_CITY', {city: text})
+        this.showCity = false
+        this,$store.dispatch('getUpcoming')
+      }
     },
     computed: {
       ...mapGetters([
@@ -71,7 +103,34 @@ import { mapGetters } from 'vuex'
   width: 310px;
 }
 .two-list{
-
+  min-height: 500px;
+}
+.tit{
+    margin-top: 20px;
+  h1{
+    display: inline-block;
+    width: 90px;
+    font-size: 20px;
+    color: #000;
+  }
+  .locat{
+    position: relative;
+    display: inline-block;
+  }
+}
+.locat{
+  .cities-list{
+    position: absolute;
+    left: 0;
+    top: 18px;
+    padding: 10px;
+    background: #fff;
+    z-index: 999;
+    border: 1px solid #ccc;
+    span{
+      display: block;
+    }
+  }
 }
 .item{
   position: relative;
@@ -89,6 +148,28 @@ import { mapGetters } from 'vuex'
   img{
     width: 100%;
     height: 140px;
+  }
+}
+.tab-hd{
+  vertical-align: bottom;
+  li{
+    margin: 0 5px;
+    float: left;
+  }
+  .on{
+    background-color: #69c;
+    color: #fff;
+    padding: 0 10px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+  }
+}
+.hd{
+  padding: 10px 0;
+  border-bottom: 1px dashed #ccc;
+  h2,.tab-hd{
+    display: inline-block;
   }
 }
 </style>

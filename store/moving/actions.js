@@ -10,7 +10,7 @@ const actions = {
     })
   },
   getUpcoming(store) {
-    utils.get('/movie/coming_soon', {}).then(res => {
+    utils.get('/movie/coming_soon', {city: store.state.city}).then(res => {
       store.commit(types.MOVING_COMING, res)
       store.commit(types.MOVING_LOADING, res)
     })
