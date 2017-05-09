@@ -3,7 +3,7 @@
     <div class="movieTag" v-for="(subject,index) in data.subjects">
       <ul>
         <li class="film-pic">
-          <a href="">
+          <a @click='showDetail(subject.id)'>
             <img :src="subject.images.large" alt="">
           </a>
         </li>
@@ -44,6 +44,12 @@ export default{
     ...mapGetters([
       'loadingMoving'
     ])
+  },
+  methods: {
+    showDetail(id) {
+      this.$router.push({ path: '/moviesDetail' })
+      this.$store.commit('MOVING_ID', {id, id})
+    }
   }
 }
 </script>

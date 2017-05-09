@@ -10,7 +10,9 @@ const state = {
   upcoming: {},
   city: '杭州',
   ranking250: {},
-  start: 0
+  start: 0,
+  id:'',
+  movieDetail: {}
 }
 
 export default {

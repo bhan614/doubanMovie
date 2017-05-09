@@ -20,6 +20,11 @@ const actions = {
       store.commit(types.MOVIE_TOP_250, res)
       store.commit(types.MOVING_LOADING, res)
     })
+  },
+  getMovieDetail(store) {
+    utils.get(`/movie/subject/${store.state.id}`, {}).then(res => {
+      store.commit(types.MOVING_DETAIL, res)
+    })
   }
 }
 export default actions

@@ -18,5 +18,11 @@ const mutations = {
   [types.PAGE_START] (state, data) {
     state.start = data.start
   },
+  [types.MOVING_ID] (state, data) {
+    state.id = data.id
+  },
+  [types.MOVING_DETAIL] (state, data) {
+    state.movieDetail = data
+  }
 }
 export default mutations
