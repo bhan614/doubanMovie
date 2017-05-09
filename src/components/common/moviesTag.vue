@@ -47,8 +47,7 @@ export default{
   },
   methods: {
     showDetail(id) {
-      this.$router.push({ path: '/moviesDetail' })
-      this.$store.commit('MOVING_ID', {id, id})
+      this.$router.push({ path: '/moviesDetail', query: {id: id} })
     }
   }
 }
@@ -57,6 +56,7 @@ export default{
 .moviesList{
   width: 950px;
   margin: 30px auto 0;
+  min-height: 500px;
   .movieTag{
     width: 118px;
     height: 270px;

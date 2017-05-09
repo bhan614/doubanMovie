@@ -71,7 +71,10 @@
       }
     },
     mounted () {
-      this.$store.dispatch('getMovieDetail');
+      let id = this.$route.query.id
+      this.$store.commit('MOVING_ID', {id: id})
+      this.$store.commit('MOVING_LOADING', {loading: true})
+      this.$store.dispatch('getMovieDetail')
     },
     watch () {
     },

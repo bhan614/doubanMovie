@@ -1,7 +1,7 @@
 <template>
-  <div id="wrapper" v-loading="loadingMoving">
+  <div id="wrapper">
     <h2>豆瓣新片榜 · · · · · · </h2>
-    <div class="indent">
+    <div class="indent" v-loading="this.loadingMoving">
       <div class="">
         <p class="ul first"></p>
         <searchTag v-for="(subject,index) in ranking250.subjects" :subject="subject" :key="index"></searchTag>
@@ -27,6 +27,7 @@
       }
     },
     mounted () {
+      this.$store.commit('MOVING_LOADING', {loading: true})
       this.$store.commit('PAGE_START', {start: 0})
       this.$store.dispatch('getTop250')
     },

@@ -4,8 +4,8 @@
       <div class="douban-search">
         <a class="title">豆瓣电影</a>
         <div class="search-container">
-          <el-input placeholder="电影、影人、影院、电视剧">
-            <el-button slot="append" icon="search"></el-button>
+          <el-input placeholder="电影、影人、影院、电视剧" v-model="content" @keyup.enter.native="searchMovie">
+            <el-button slot="append" icon="search" @click="searchMovie"></el-button>
           </el-input>
         </div>
         <img class="douban-title-img" src="https://img3.doubanio.com/f/movie/9f89b66fd864158832aa65002525bb34fb029a56/pics/movie/events/annual2016/ad_web.png">
@@ -25,16 +25,17 @@
   export default{
     data () {
       return {
+        content: '',
         title: '正在热映',
         barList: [{
           title: '正在热映',
           url: '/'
         }, {
           title: '即将上映',
-          url: '/'
+          url: '/upcoming'
         }, {
           title: 'Top250',
-          url: '/'
+          url: '/top250'
         }, {
           title: '口碑榜',
           url: '/'
@@ -50,6 +51,12 @@
     methods: {
       choiceUrl (title) {
         this.title = title
+      },
+      searchMovie() {
+        this.$store.commit('SEARCH_TEXT', {searchText: this.content})
+        this.$store.commit('SEARCH_LOADING', {loading: true})
+        this.$store.dispatch('getSearchList')
+        this.$router.push({path: '/search', query: {searchText: this.content}})
       }
     }
   }

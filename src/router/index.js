@@ -4,6 +4,7 @@ import Movie from '@/components/Movie'
 import Upcoming from '@/components/upcoming'
 import Top250 from '@/components/top250'
 import MoviesDetail from '@/components/common/moviesDetail'
+import SearchList from '@/components/searchList'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/moviesDetail' ,
       name: 'moviesDetail',
       component: MoviesDetail
+    },
+    {
+      path: '/search' ,
+      name: 'search',
+      component: SearchList
     }
   ]
 })

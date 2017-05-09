@@ -5,6 +5,8 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
+  import searchTag from './common/searchTag'
   export default{
     data () {
       return {
@@ -14,25 +16,21 @@
       this.$store.dispatch('getSearchList')
     },
     components: {
-      'searchTag': (resolve) => {
-        require(['./common/searchTag.vue'], resolve)
-      }
+      searchTag
     },
-    watch: {
-      searchText () {
+    mounted() {
+      if (this.searchText === "") {
+        let searchText = this.$route.query.searchText
+        this.$store.commit('SEARCH_TEXT', {searchText: searchText})
         this.$store.dispatch('getSearchList')
       }
     },
     computed: {
-      searchText () {
-        return this.$store.getters.searchText
-      },
-      searchList () {
-        return this.$store.getters.searchList
-      },
-      searchLoading () {
-        return this.$store.getters.searchLoading
-      }
+      ...mapGetters([
+        'searchText',
+        'searchList',
+        'searchLoading'
+      ])
     }
   }
 </script>

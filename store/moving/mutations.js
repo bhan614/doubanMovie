@@ -23,6 +23,15 @@ const mutations = {
   },
   [types.MOVING_DETAIL] (state, data) {
     state.movieDetail = data
+  },
+  [types.SEARCH_TEXT] (state, data) {
+    state.searchText = data.searchText
+  },
+  [types.SEARCH_LIST] (state, data) {
+    state.searchList = data
+  },
+  [types.SEARCH_LOADING] (state, data) {
+    state.searchLoading = data.loading
   }
 }
 export default mutations

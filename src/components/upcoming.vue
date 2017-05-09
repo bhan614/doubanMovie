@@ -20,8 +20,8 @@
               </ul>
           </div>
         </div>
-        <div class="two-list">
-          <ul class="clearfix"  v-loading="loadingMoving" >
+        <div class="two-list" v-loading="this.loadingMoving">
+          <ul class="clearfix">
             <li class="item" v-for="(item, index) in this.upcoming.subjects" :key="index">
               <a class="thumb" v-bind:href="item.alt">
                   <img v-bind:src="item.images.small" class="">
@@ -82,6 +82,7 @@ import { mapGetters } from 'vuex'
       }
     },
     mounted () {
+      this.$store.commit('MOVING_LOADING', {loading: true})
       this.$store.dispatch('getUpcoming')
     },
     methods: {
@@ -94,8 +95,8 @@ import { mapGetters } from 'vuex'
     computed: {
       ...mapGetters([
         'upcoming',
-        'loadingMoving',
-        'city'
+        'city',
+        'loadingMoving'
       ])
     }
   }

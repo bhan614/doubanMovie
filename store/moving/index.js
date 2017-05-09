@@ -12,7 +12,10 @@ const state = {
   ranking250: {},
   start: 0,
   id:'',
-  movieDetail: {}
+  movieDetail: {},
+  searchText: '',
+  searchList: {},
+  searchLoading: true
 }
 
 export default {

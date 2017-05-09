@@ -16,6 +16,7 @@ export default {
     }
   },
   mounted () {
+    this.$store.commit('MOVING_LOADING', {loading: true})
     this.$store.dispatch('getMoving')
   },
   methods: {
