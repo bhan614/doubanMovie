@@ -10,7 +10,11 @@ const actions = {
     })
   },
   getUpcoming(store) {
-    utils.get('/movie/coming_soon', {city: store.state.city}).then(res => {
+    utils.get('/movie/coming_soon', {city: store.state.city, start: store.state.upcoming.start+1}).then(res => {
+      if (store.state.upcoming.subjects && store.state.upcoming.subjects.length) {
+      //  res.subjects = store.state.upcoming.subjects.concat(res.subjects);
+        commit('PAGE_LOAD', {pageload: false})
+      }
       store.commit(types.MOVING_COMING, res)
       store.commit(types.MOVING_LOADING, {loading: false})
     })

@@ -32,6 +32,9 @@ const mutations = {
   },
   [types.SEARCH_LOADING] (state, data) {
     state.searchLoading = data.loading
+  },
+  [types.PAGE_LOAD] (state, data) {
+    state.pageload = data.pageload
   }
 }
 export default mutations

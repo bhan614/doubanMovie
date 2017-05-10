@@ -5,9 +5,9 @@
           <h1>{{city}}-影讯</h1>
           <div id="" class="locat">
             <el-dropdown trigger="click" @command="changeCity">
-              <span class="el-dropdown-link">
+              <a class="el-dropdown-link" href="javascript:;">
                 [切换城市]
-              </span>
+              </a>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item v-for="(city,index) in citys" :command="city.name" :key="index">{{city.name}}</el-dropdown-item>
               </el-dropdown-menu>
@@ -46,6 +46,11 @@
               </div>
             </li>
           </ul>
+          <div class="load-more">
+            <el-button type="text" @click="moredata" v-show="!pageload && !nodata">加载更多</el-button>
+            <el-button type="text" v-show="pageload">加载中...</el-button>
+            <el-button type="text" v-show="nodata">没有更多了</el-button>
+          </div>
         </div>
       </article>
       <aside class="right-side">
@@ -78,7 +83,8 @@ import { mapGetters } from 'vuex'
         {
           name: '杭州'
         }
-      ]
+      ],
+      nodata: false
       }
     },
     mounted () {
@@ -90,13 +96,21 @@ import { mapGetters } from 'vuex'
         this.$store.commit('MOVIE_CITY', {city: command})
         this.showCity = false
         this,$store.dispatch('getUpcoming')
+      },
+      moredata() {
+        this.$store.commit('PAGE_LOAD', {pageload: true})
+        this.$store.dispatch('getUpcoming')
+        if (this.upcoming.start * this.upcoming.count > this.upcoming.total) {
+          this.nodata = true
+        }
       }
     },
     computed: {
       ...mapGetters([
         'upcoming',
         'city',
-        'loadingMoving'
+        'loadingMoving',
+        'pageload'
       ])
     }
   }
@@ -183,5 +197,8 @@ import { mapGetters } from 'vuex'
   h2,.tab-hd{
     display: inline-block;
   }
+}
+.load-more{
+  text-align: center;
 }
 </style>

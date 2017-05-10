@@ -9,6 +9,7 @@ const getters = {
   movieDetail: state => state.movieDetail,
   searchText: state => state.searchText,
   searchList: state => state.searchList,
-  searchLoading: state => state.searchLoading
+  searchLoading: state => state.searchLoading,
+  pageload: state => state.pageload
 }
 export default getters

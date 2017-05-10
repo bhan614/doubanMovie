@@ -7,7 +7,10 @@ const state = {
     subjects: []
   },
   loadingMoving: true,
-  upcoming: {},
+  upcoming: {
+    start: 0,
+    pageload: false
+  },
   city: '北京',
   ranking250: {},
   start: 0,

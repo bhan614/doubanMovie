@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <Dheader></Dheader>
-    <router-view></router-view>
+    <transition name="fade">
+      <keep-alive exclude-"movieDetail">
+        <router-view></router-view>
+      </keep-alive>
+    </transition>
   </div>
 </template>
 
@@ -23,5 +27,17 @@ export default {
   margin: 0;
   padding: 0;
   font-family: '微软雅黑';
+}
+.fade-enter-active {
+  transition: opacity 0.2s
+}
+.fade-leave-active {
+  transition: opacity 0.2s
+}
+.fade-enter-active {
+  opacity: 0
+}
+.fade-leave-active {
+  opacity: 0
 }
 </style>
