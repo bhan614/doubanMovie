@@ -23,8 +23,8 @@
         <div class="two-list" v-loading="this.loadingMoving">
           <ul class="clearfix">
             <li class="item" v-for="(item, index) in this.upcoming.subjects" :key="index">
-              <a class="thumb" v-bind:href="item.alt">
-                  <img v-bind:src="item.images.small" class="">
+              <a class="thumb" @click="showDetail(item.id)">
+                  <img class="movieImg" :src="item.images.large">
               </a>
               <div class="intro">
                   <h3>
@@ -103,6 +103,10 @@ import { mapGetters } from 'vuex'
         if (this.upcoming.start * this.upcoming.count > this.upcoming.total) {
           this.nodata = true
         }
+      },
+      showDetail(id) {
+        this.$store.commit('MOVIE_LOADING', {loading: true})
+        this.$router.push({ path: '/moviesDetail', query: {id: id} })
       }
     },
     computed: {
@@ -171,6 +175,7 @@ import { mapGetters } from 'vuex'
   left: 0;
   width: 100px;
   height: 140px;
+  overflow: hidden;
   img{
     width: 100%;
     height: 140px;

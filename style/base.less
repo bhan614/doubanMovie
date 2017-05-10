@@ -6,6 +6,15 @@ html {
     -ms-text-size-adjust: 100%;
 }
 
+/*鼠标经过 图片放大*/
+.movieImg{
+ cursor: pointer;
+  transition: all 0.6s;
+}
+.movieImg:hover{
+  transform: scale(1.1);
+}
+
 /* 内外边距通常让各个浏览器样式的表现位置不同 */
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
     margin:0;padding:0;
@@ -213,13 +222,13 @@ samp {
 }*/
 /*动画 fade,bounce*/
 .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s
+    transition: opacity .2s
   }
-  .fade-enter, .fade-leave-active {
+  .fade-enter-active, .fade-leave-active {
     opacity: 0
   }
   .bounce-enter-active {
-  animation: bounce-in .5s;
+  animation: bounce-in .2s;
 }
 .bounce-leave-active {
   animation: bounce-out .5s;

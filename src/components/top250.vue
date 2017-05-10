@@ -47,5 +47,8 @@
     width: 950px;
     min-height: 500px;
     margin: 30px auto;
+    .indent{
+      min-height: 500px;
+    }
   }
 </style>

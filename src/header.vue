@@ -36,15 +36,6 @@
         }, {
           title: 'Top250',
           url: '/top250'
-        }, {
-          title: '口碑榜',
-          url: '/'
-        }, {
-          title: '北美票房榜',
-          url: '/'
-        }, {
-          title: '新片榜',
-          url: '/'
         }]
       }
     },
@@ -72,11 +63,12 @@
       margin: 0 auto;
       ul{
         li{
-          padding: 7px;
           list-style: none;
           display: inline-block;
           cursor: pointer;
           a{
+            display: inline-block;
+            padding: 8px;
             font-size: 12px;
             color: #aaa;
             text-decoration: none;

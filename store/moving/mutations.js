@@ -7,7 +7,11 @@ const mutations = {
     state.loadingMoving = data.loading
   },
   [types.MOVING_COMING] (state, data){
-    state.upcoming = data
+    if (state.upcoming.subjects && state.upcoming.subjects.length) {
+      state.upcoming.subjects = state.upcoming.subjects.concat(data.subjects);
+    } else {
+      state.upcoming = data  
+    }
   },
   [types.MOVIE_CITY] (state, data) {
     state.city = data.city
@@ -35,6 +39,9 @@ const mutations = {
   },
   [types.PAGE_LOAD] (state, data) {
     state.pageload = data.pageload
+  },
+  [types.MOVIE_COMMENT] (state, data) {
+    state.movieComment = data
   }
 }
 export default mutations

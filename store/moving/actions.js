@@ -11,10 +11,7 @@ const actions = {
   },
   getUpcoming(store) {
     utils.get('/movie/coming_soon', {city: store.state.city, start: store.state.upcoming.start+1}).then(res => {
-      if (store.state.upcoming.subjects && store.state.upcoming.subjects.length) {
-      //  res.subjects = store.state.upcoming.subjects.concat(res.subjects);
-        commit('PAGE_LOAD', {pageload: false})
-      }
+      store.commit(types.PAGE_LOAD, {pageload: false})
       store.commit(types.MOVING_COMING, res)
       store.commit(types.MOVING_LOADING, {loading: false})
     })
@@ -33,8 +30,13 @@ const actions = {
   },
   getSearchList(store) {
     utils.get(`/movie/search`, {q: store.state.searchText}).then(res => {
-      store.commit('SEARCH_LIST', res)
-      store.commit('SEARCH_LOADING', {loading: false})
+      store.commit(types.SEARCH_LIST, res)
+      store.commit(types.SEARCH_LOADING, {loading: false})
+    })
+  },
+  getMovieComment(store) {
+    utils.get(`/movie/subject/${store.state.id}/comments`, {}).then(res => {
+      store.commit(types.MOVIE_COMMENT, res)
     })
   }
 }

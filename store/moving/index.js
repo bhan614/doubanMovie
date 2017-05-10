@@ -9,16 +9,20 @@ const state = {
   loadingMoving: true,
   upcoming: {
     start: 0,
-    pageload: false
   },
+  pageload: false,
   city: '北京',
   ranking250: {},
-  start: 0,
+  start: 0,   //top 250分页起点
   id:'',
-  movieDetail: {},
+  movieDetail: {
+    rating: {},
+    images: {}
+  },
   searchText: '',
   searchList: {},
-  searchLoading: true
+  searchLoading: true,
+  movieComment: {}
 }
 
 export default {

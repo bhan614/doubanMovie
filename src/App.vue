@@ -28,16 +28,4 @@ export default {
   padding: 0;
   font-family: '微软雅黑';
 }
-.fade-enter-active {
-  transition: opacity 0.2s
-}
-.fade-leave-active {
-  transition: opacity 0.2s
-}
-.fade-enter-active {
-  opacity: 0
-}
-.fade-leave-active {
-  opacity: 0
-}
 </style>
