@@ -10,7 +10,7 @@ const mutations = {
     if (state.upcoming.subjects && state.upcoming.subjects.length) {
       state.upcoming.subjects = state.upcoming.subjects.concat(data.subjects);
     } else {
-      state.upcoming = data  
+      state.upcoming = data
     }
   },
   [types.MOVIE_CITY] (state, data) {

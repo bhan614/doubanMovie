@@ -10,6 +10,8 @@
   </div>
 </template>
 <script>
+  import {Utils} from '../common/util'
+  let util = new Utils()
   import searchTag from './common/searchTag'
   import { mapGetters } from 'vuex'
   export default{
@@ -30,13 +32,36 @@
       this.$store.commit('MOVING_LOADING', {loading: true})
       this.$store.commit('PAGE_START', {start: 0})
       this.$store.dispatch('getTop250')
+      window.onscroll = () => {
+        console.log(this.isLoad)
+        console.log(util.getScrollTop())
+        console.log(util.getClientHeight())
+        console.log(util.getScrollHeight())
+        if (!this.isLoad) {
+          if (util.getScrollTop() + util.getClientHeight() + 400 > util.getScrollHeight()) {
+            let page = this.page + 1
+            if (this.page <= this.totalPage) {
+              this.isLoad = true
+              this.page = page
+              this.start = (this.page - 1) * 10
+              this.$store.commit('PAGE_START', {start: this.start})
+              this.$store.dispatch('getTop250')
+            }
+          }
+        }
+      }
     },
     components: {
       searchTag
     },
     computed: {
+      ranking250 () {
+        this.isLoad = false
+        let ranklist = this.$store.getters.ranking250
+        this.totalPage = ranklist.total
+        return ranklist
+      },
       ...mapGetters([
-        'ranking250',
         'loadingMoving'
       ])
     }

@@ -3,7 +3,9 @@ const getters = {
   loadingMoving: state => state.loadingMoving,
   upcoming: state => state.upcoming,
   city: state => state.city,
-  ranking250: state => state.ranking250,
+  ranking250: state => {
+    return state.ranking250
+  },
   id: state => state.id,
   start: state => state.start,
   movieDetail: state => {

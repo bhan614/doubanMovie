@@ -17,7 +17,11 @@ const actions = {
     })
   },
   getTop250(store) {
-    utils.get('/movie/top250', {start: store.state.start, count: 7}).then(res => {
+    utils.get('/movie/top250', {start: store.state.start, count: 10}).then(res => {
+      let subject = store.state.ranking250.subjects
+      if (subject) {
+        res.subjects = subject.concat(res.subjects)
+      }
       store.commit(types.MOVIE_TOP_250, res)
       store.commit(types.MOVING_LOADING, {loading: false})
     })

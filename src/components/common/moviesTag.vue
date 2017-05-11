@@ -153,6 +153,15 @@ export default{
         }
       }
     }
+    .load-more{
+      cursor: pointer;
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      background: #eee;
+      color: @doubanColor;
+    }
   }
 }
 </style>
