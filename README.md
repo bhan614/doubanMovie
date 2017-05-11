@@ -5,17 +5,9 @@
 ## Build Setup
 
 ``` bash
-# install dependencies
 npm install
-
-# serve with hot reload at localhost:8080
 npm run dev
-
-# build for production with minification
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
 ## 项目主页展示
@@ -32,7 +24,7 @@ npm run build --report
 
 ## Vue-cli
 
-### 使用vue-cli脚手架搭建，按照步骤执行即可
+使用vue-cli脚手架搭建，按照步骤执行即可
 
 ``` bash
 npm install -g vue-cli
@@ -44,7 +36,7 @@ npm run dev
 
 ## Element-ui
 
-### ui库使用的是element-ui,直接引用使用
+ui库使用的是element-ui,直接引用使用
 
 ``` bash
 import Element from 'element-ui'
@@ -53,11 +45,11 @@ Vue.use(Element)
 
 ## Vue-router2
 
-### 路由使用的是默认的hash模式，后续打算更改为html5 history模式
+路由使用的是默认的hash模式，后续打算更改为html5 history模式
 
 ## 请求豆瓣api
 
-### 在proxyTable中配置代理
+在proxyTable中配置代理
 ``` bash
 proxyTable: {
     '/api': {
@@ -69,7 +61,7 @@ proxyTable: {
     }
 }
 ```
-### 项目中使用了以下api
+项目中使用了以下api
 - /v2/movie/in_theaters 正在上映的电影
 - /v2/movie/coming_soon 即将上映的电影
 - /v2/movie/subject/:id  单个电影信息
@@ -77,8 +69,8 @@ proxyTable: {
 
 ### vue-resource
 
-### 这里使用vue-resource进行数据交互、不过更推荐使用axios
+这里使用vue-resource进行数据交互、不过更推荐使用axios
 
 ## Vuex
 
-### vuex用来管理全局状态，用起来很方便，可以查看vuex文档进行学习
+vuex用来管理全局状态，用起来很方便，可以查看vuex文档进行学习
