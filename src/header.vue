@@ -8,13 +8,12 @@
             <el-button slot="append" icon="search" @click="searchMovie"></el-button>
           </el-input>
         </div>
-        <img class="douban-title-img" src="https://img3.doubanio.com/f/movie/9f89b66fd864158832aa65002525bb34fb029a56/pics/movie/events/annual2016/ad_web.png">
       </div>
     </div>
     <div class="douban-bar">
       <ul>
         <li v-for="bar in barList" @click="choiceUrl(bar.title)">
-          <router-link :to="bar.url" :class="title === bar.title ? 'active' : ''">{{bar.title}}</router-link>
+          <router-link :to="bar.url" class='bg-hover'>{{bar.title}}</router-link>
         </li>
       </ul>
     </div>
@@ -22,6 +21,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
   export default{
     data () {
       return {
@@ -42,6 +42,8 @@
     methods: {
       choiceUrl (title) {
         this.title = title
+        this.content = ""
+        this.$store.commit('SEARCH_TEXT', {searchText: ""})
       },
       searchMovie() {
         this.$store.commit('SEARCH_TEXT', {searchText: this.content})
@@ -49,6 +51,11 @@
         this.$store.dispatch('getSearchList')
         this.$router.push({path: '/search', query: {searchText: this.content}})
       }
+    },
+    computed: {
+      ...mapGetters([
+        'searchText'
+      ])
     }
   }
 </script>
@@ -66,15 +73,11 @@
           list-style: none;
           display: inline-block;
           cursor: pointer;
+          padding: 6px;
           a{
             display: inline-block;
-            padding: 8px;
             font-size: 12px;
-            color: #aaa;
-            text-decoration: none;
-          }
-          a.active{
-            color: $doubanColor;
+            padding: 2px 4px;
           }
         }
       }

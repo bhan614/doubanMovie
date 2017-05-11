@@ -1,5 +1,8 @@
 const getters = {
-  movingData: state => state.movingData,
+  movingData: state => {
+    state.movingData.subjects.map(v => v.rating.average = v.rating.average/2)
+    return state.movingData
+  },
   loadingMoving: state => state.loadingMoving,
   upcoming: state => state.upcoming,
   city: state => state.city,

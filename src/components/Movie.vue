@@ -19,7 +19,33 @@
         </ul>
       </div>
     </div>
-    <MoviesTag :data="this.movingData"></MoviesTag>
+    <div class="content-container">
+      <MoviesTag :data="this.movingData"></MoviesTag>
+      <div class="aside">
+        <div class="aside-top">
+          <ul>
+            <li>
+              <a class="bg-hover">豆瓣电影评分八问</a>
+            </li>
+          </ul>
+        </div>
+        <img src="../assets/adv.jpg" width="300" height="250" />
+        <div class="aside-top">
+          <h2> 电影活动 &nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;· </h2>
+          <ul>
+            <li>
+              <a class="bg-hover">《异星觉醒》指缝观影，挑战心理极限！</a>
+            </li>
+            <li>
+              <a class="bg-hover">有奖 | 给憋神们支个招 #告白支招#</a>
+            </li>
+            <li>
+              <a class="bg-hover">燃！《亚瑟王》首批观众点评滚烫来袭</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -74,6 +100,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+@import "../../style/color";
+@import "../../style/base";
 .moving {
   margin-bottom: 20px;
   p {
@@ -95,6 +123,35 @@ export default {
     }
     .hd{
       border: none;
+      margin: 15px 0;
+    }
+  }
+  .content-container{
+    width: 950px;
+    overflow: hidden;
+    margin: 10px auto;
+    padding-bottom: 20px;
+    .aside{
+      width: 300px;
+      float: right;
+      padding-top: 20px;
+      img{
+        margin: 20px 0;
+      }
+      .aside-top{
+        background-color: #f2f7f6;
+        border-radius: 4px;
+        padding: 6px 0 6px 18px;
+        li{
+          color: @doubanColor;
+          margin: 10px 0;
+        }
+        h2{
+          color:#072;
+          font-size: 15px;
+          margin-bottom: 12px;
+        }
+      }
     }
   }
 }

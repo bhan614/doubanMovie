@@ -23,7 +23,7 @@
             <div class="people-sroce">
               <div>
                 <p>豆瓣评分</p>
-                <span class="store" v-if="movieDetail.rating.average">{{movieDetail.rating.average}}</span>
+                <span class="score" v-if="movieDetail.rating.average">{{movieDetail.rating.average}}</span>
                 <el-rate v-model="movieDetail.rating.average" disabled></el-rate>
                 <p class="no-publish" v-if="!movieDetail.rating.average">
                   尚未上映
@@ -167,19 +167,24 @@
              color: #aaa;
              .score{
                font-size: 25px;
-               margin-right: 10px;
              }
              .el-rate{
                vertical-align: top;
                display: inline-block;
                margin-top: 3px;
+               .el-rate__item{
+                 transform: scale(0.8);
+                 display: inline-block;
+                 vertical-align: middle;
+                 width: 15px;
+               }
                i{
                  font-size: 14px;
                }
              }
              .comment-num{
                margin-top: -20px;
-               margin-left: 45px;
+               margin-left: 55px;
                color: #666699;
              }
            }
@@ -203,6 +208,7 @@
              .el-rate{
                margin-left: 5px;
                display: inline-block;
+               vertical-align: middle;
                .el-rate__icon{
                  font-size: 12px;
                }

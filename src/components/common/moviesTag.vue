@@ -11,12 +11,15 @@
           <li class="film-name">
             <a href="">{{subject.title}}</a>
           </li>
-          <li class="film-rate">
+          <li class="film-rate" v-if="subject.rating.average !== 0">
             <el-rate
               v-model="subject.rating.average"
               disabled>
             </el-rate>
             <span class="rateNum">{{subject.rating.average*2}}</span>
+          </li>
+          <li class="film-rate" v-else>
+            <span>暂无评分</span>
           </li>
           <li class="film-button">
           <span>
@@ -64,9 +67,9 @@ export default{
 @import "../../../style/color";
 @import "../../../style/base";
 .moviesList{
-  width: 950px;
-  margin: 10px auto 0;
+  width: 650px;
   min-height: 500px;
+  float: left;
   .movie-container{
     width: 650px;
     border-top: 1px dashed #ccc;
@@ -156,8 +159,8 @@ export default{
     .load-more{
       cursor: pointer;
       width: 100%;
-      height: 30px;
-      line-height: 30px;
+      height: 35px;
+      line-height: 35px;
       text-align: center;
       background: #eee;
       color: @doubanColor;
